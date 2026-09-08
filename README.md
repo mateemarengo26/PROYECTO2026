@@ -1,2 +1,2 @@
 # PROYECTO2026
-ASD
+David,Thiago y Marengo

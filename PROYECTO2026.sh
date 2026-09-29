@@ -252,14 +252,20 @@ i
 		;;
 		5)
 			# año/mes/dia
-
+			echo $(date +"%Y/%m/%d")
+			
 			# Hoy es {dia} de {mes} del año {año}
-			
+			dia=$(date +"%d") # %d -> dia numerico del mes
+			mes=$(date +"%B") # %B -> nombre del mes
+			anio=$(date +"%Y") #%Y año actual
+			echo "Hoy es $dia de $mes del año $anio"
+
 			# Han pasado {dias} desde el comienzo del año.
-			
+			dias_pasados=$(date +"%j")
+			echo "Han pasado $dias_pasados desde el comienzo del año."
 		;;
 		6)
-			echo "en proceso"
+			# Mostrar mes con formato de calendario según el nro mes ingresado
 		;;
 		7)
 			echo "Saliendo..."

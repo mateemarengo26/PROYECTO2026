@@ -3,6 +3,15 @@
 # Ultima actualización: 29/9/26
 opcion=0
 
+archivo_log="log.txt"
+if [ ! -f "$archivo_log" ]; then
+	echo "El archivo log no existe, se creara uno nuevo."
+	touch $archivo_log
+fi
+
+fecha_actual=$(date +"%d/%m/%Y - %T")
+echo "Log de la fecha $fecha_actual" >> $archivo_log
+
 while [ $opcion -ne 7 ]
 do
 	echo "[--------Menu--------]"
@@ -18,6 +27,7 @@ do
 	read -p "Opción >> " opcion
 	case $opcion in
 		1)
+			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu 'Directorios'" >> $archivo_log
 			echo "[--------Directorios--------]"
 			echo "1. Crear directorio"
 			echo "2. Eliminar directorio"
@@ -36,6 +46,7 @@ do
 
 					echo "No se pudó crear el directorio $nombre, ya existe."
 				fi
+				echo "[$(date +"%T") - $(whoami)]: Se creo un nuevo directorio con el nombre $nombre" >> $archivo_log
 			;;
 			2)
 				read -p "Nombre del directorio a eliminar: " nombre
@@ -45,16 +56,20 @@ do
 				else
 					echo "No se pudó borrar el directorio, verifique que exista y este vácio."
 				fi
+				echo "[$(date +"%T") - $(whoami)]: Se elimino un directorio con el nombre $nombre." >> $archivo_log
 			;;
 			0)
+				echo "[$(date +"%T") - $(whoami)]: Volvio al menu principal." >> $archivo_log
 				echo "Volviendo al menu principal."
 			;;
 			*)
+				echo "[$(date +"%T") - $(whoami)]: Ingreso una opcion invalida." >> $archivo_log
 				echo "Opción inválida"
 			;;
 		esac
 		;;
 		2)
+			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu 'Archivos'" >> $archivo_log
 			echo "[--------Archivos--------]"
 			echo "1. Eliminar archivo"
 			echo "2. Copiar archivo"
@@ -64,7 +79,8 @@ do
 			echo "0. Volver al menu"
 			echo "[------------------------]"
 			read -p "Opción >> " opcion_menu
-
+			
+			# Agregar opcion de crear archivo nuevo (no existe)
 			case $opcion_menu in
 				1)
 					read -p "Nombre del archivo a eliminar: " nombre
@@ -74,6 +90,7 @@ do
 					else
 						echo "No se pudó eliminar el archivo"
 					fi
+					echo "[$(date +"%T") - $(whoami)]: Se elimino el archivo $nombre" >> $archivo_log
 				;;
 				2)
 					read -p "Nombre del archivo a copiar: " nombre
@@ -84,6 +101,7 @@ do
 					else
 						echo "No se pudó copiar el archivo."
 					fi
+					echo "[$(date +"%T") - $(whoami)]: Se copio el archivo $nombre a $ruta" >> $archivo_log
 				;;
 				3)
 					read -p "Nombre del archivo a mover: " nombre
@@ -94,6 +112,7 @@ do
 					else
 						echo "No se pudó copiar el archivo."
 					fi
+					echo "[$(date +"%T") - $(whoami)]: Se movio el archivo $nombre a $ruta" >> $archivo_log
 				;;
 				4)
 					read -p "Nombre del archivo: " nombre
@@ -108,21 +127,25 @@ do
 							echo "El archivo tiene permisos de ejecución."
 						fi
 					fi
-
+					echo "[$(date +"%T") - $(whoami)]: Pregunto que permisos tiene el archivo $nombre" >> $archivo_log
 				;;
 				5)
 					read -p "Nombre del directorio: " nombre
 					ls $nombre
+					echo "[$(date +"%T") - $(whoami)]: Listo archivos del directorio $nombre " >> $archivo_log
 				;;
 				0)
 					echo "Volviendo al menu principal:"
+					echo "[$(date +"%T") - $(whoami)]: Volvio al menu principal." >> $archivo_log
 				;;
 				*)
 					echo "Opción inválida."
+					echo "[$(date +"%T") - $(whoami)]: Ingreso una opcion invalida." >> $archivo_log
 				;;
 			esac
 		;;
 		3)
+			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu 'Agenda'" >> $archivo_log
 			agenda_nombre="agenda.txt"
 			if touch $agenda_nombre
 			then
@@ -130,6 +153,7 @@ do
 			else
 				echo "Se cargo el archivo $agenda_nombre correctamente."
 			fi
+			echo "[$(date +"%T") - $(whoami)]: Se verifico la existencia del archivo $agenda_nombre" >> $archivo_log
 
 			echo "[--------AGENDA--------]"
 			echo "1. Agregar contacto"
@@ -150,34 +174,43 @@ do
 					read -p "Ingrese el número de telefono: " telefono
 					read -p "Ingrese la fecha de nacimiento (dia/mes/año) " fecha
 					echo "$ci:$nombre:$apellido:$telefono$fecha" >> $nombre_agenda
+					echo "[$(date +"%T") - $(whoami)]: Se agrego el contacto $nombre." >> $archivo_log
 				;;
 				2)
 					cat $nombre_agenda
+					echo "[$(date +"%T") - $(whoami)]: Se listaron todos los contactos." >> $archivo_log
 				;;
 				3)
 					read -p "Ingrese la linea a visualizar: " linea
 					head -n $linea $nombre_agenda | tail -n 1
+					echo "[$(date +"%T") - $(whoami)]: Se visualizo el contacto de la linea $linea." >> $archivo_log
 				;;
 				4)
 					read -p "Ingrese la CI: " ci
 					read -p "Ingrese número de campo a mostrar: " campo
 					cut -d":" -f$campo $nombre_agenda
+					echo "[$(date +"%T") - $(whoami)]: Se busco informacion sobre el contacto cuya CI es $ci" >> $archivo_log
 				;;
 				5)
 					echo "sin terminar"
+					echo "[$(date +"%T") - $(whoami)]: " >> $archivo_log
 				;;
 				6)
 					echo "sin terminar"
+					echo "[$(date +"%T") - $(whoami)]: " >> $archivo_log
 				;;
 				0)
 					echo "Volviendo al menu principal."
+					echo "[$(date +"%T") - $(whoami)]: " >> $archivo_log
 				;;
 				*)
 					echo "Opción inválida."
+					echo "[$(date +"%T") - $(whoami)]: Ingreso una opcion invalida" >> $archivo_log
 				;;
 			esac
 		;;
 		4)
+			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu 'Permisos'" >> $archivo_log
 			echo "[----Permisos----]"
 			echo "1. Agregar permiso"
 			echo "2. Quitar permiso"
@@ -211,7 +244,8 @@ do
 						*)
 							echo "Permiso inválido."
 						;;	
-					esac	
+					esac
+					echo "[$(date +"%T") - $(whoami)]: Agrego permisos al archivo $nombre" >> $archivo_log	
 				;;
 				2)
 					read -p "Ingrese el nombre del archivo: " nombre
@@ -240,17 +274,20 @@ do
 							echo "Permiso inválido."
 						;;
 					esac
+					echo "[$(date +"%T") - $(whoami)]: Quito permisos al archivo $nombre" >> $archivo_log
 				;;
 				0)
-					echo "Volviendo al menu principal"
+					echo "Volviendo al menu principal."
+					echo "[$(date +"%T") - $(whoami)]: Volvio al menu principal." >> $archivo_log
 				;;
 				*)
-
+					echo "Opcion invalida."
+					echo "[$(date +"%T") - $(whoami)]: Ingreso una opcion invalida." >> $archivo_log
 				;;
 			esac
-i
 		;;
 		5)
+			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu de 'Fecha y hora'" >> $archivo_log
 			# año/mes/dia
 			echo $(date +"%Y/%m/%d")
 			
@@ -265,9 +302,16 @@ i
 			echo "Han pasado $dias_pasados desde el comienzo del año."
 		;;
 		6)
+			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu de 'Mostrar mes del año'" >> $archivo_log
 			# Mostrar mes con formato de calendario según el nro mes ingresado
+			echo "[------Calendario------]" 
+			read -p "Ingrese el mes a mostrar: " mes
+			anio=$(date +"%Y")
+			cal $mes $anio
+			echo "[$(date +"%T") - $(whoami)]: Se mostro el mes $mes del año $anio" >> $archivo_log	 
 		;;
 		7)
+			echo "[$(date +"%T") - $(whoami)]: Termino la sesion" >> $archivo_log
 			echo "Saliendo..."
 		;;
 	esac

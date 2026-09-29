@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Ultima actualización: 29/9/26
 opcion=0
 
 while [ $opcion -ne 7 ]
@@ -10,9 +11,9 @@ do
 	echo "3. Agenda"
 	echo "4. Modificar permisos"
 	echo "5. Fecha y hora"
+	echo "6. Mostrar mes del año"
 	echo "7. Salir"
 	echo "[--------------------]"
-
 	
 	read -p "Opción >> " opcion
 	case $opcion in
@@ -247,11 +248,18 @@ do
 
 				;;
 			esac
-
+i
 		;;
 		5)
-			fecha=$(date | cut -d" " -f1,2,3)
-			echo "$fecha"
+			# año/mes/dia
+
+			# Hoy es {dia} de {mes} del año {año}
+			
+			# Han pasado {dias} desde el comienzo del año.
+			
+		;;
+		6)
+			echo "en proceso"
 		;;
 		7)
 			echo "Saliendo..."

@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# Ultima actualización: 29/9/26
+# Ultima actualización: 13/10/26
+# date %{formato} -> Define que se mostrará con el comando date.
+# EJ: %T hora, %Y año, %m mes, %d dia, %B mes del año.
+# if [ -r/-w/-x "archivo ] -> Verifica si ese archivo tiene uno de esos permisos.
+
 opcion=0
 
 usuario_autorizado="admin"
@@ -86,7 +90,6 @@ do
 			echo "[------------------------]"
 			read -p "Opción >> " opcion_menu
 			
-			# Agregar opcion de crear archivo nuevo (no existe)
 			case $opcion_menu in
 				1)
 					read -p "Nombre del archivo a eliminar: " nombre
@@ -209,8 +212,7 @@ do
 				;;
 				5)
 					read -p "Ingrese la CI del contacto a eliminar: " ci
-					temporal="agenda_temp.txt"
-					> $temporal
+					temporal="agenda_temp.txt" > $temporal
 					encontrado=0
 					while read linea
 					do
@@ -235,8 +237,7 @@ do
 				6)
 					read -p "Ingrese la CI del contacto: " ci
 					read -p "Ingrese el nuevo número de telefono: " telefono_nuevo
-					temporal="agenda_temp.txt"
-					> $temporal
+					temporal="agenda_temp.txt" > $temporal
 					encontrado=0
 					while read linea
 					do
@@ -395,22 +396,20 @@ do
 		;;
 		5)
 			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu de 'Fecha y hora'" >> $archivo_log
-			# año/mes/dia
+			
 			echo $(date +"%Y/%m/%d")
 			
-			# Hoy es {dia} de {mes} del año {año}
 			dia=$(date +"%d") # %d -> dia numerico del mes
 			mes=$(date +"%B") # %B -> nombre del mes
 			anio=$(date +"%Y") #%Y año actual
 			echo "Hoy es $dia de $mes del año $anio"
 
-			# Han pasado {dias} desde el comienzo del año.
 			dias_pasados=$(date +"%j")
 			echo "Han pasado $dias_pasados desde el comienzo del año."
 		;;
 		6)
 			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu de 'Mostrar mes del año'" >> $archivo_log
-			# Mostrar mes con formato de calendario según el nro mes ingresado
+			
 			echo "[------Calendario------]" 
 			read -p "Ingrese el mes a mostrar: " mes
 			anio=$(date +"%Y")

@@ -39,7 +39,6 @@ do
 			echo "[--------Directorios--------]"
 			echo "1. Crear directorio"
 			echo "2. Eliminar directorio"
-			echo "3. Agenda"
 			echo "0. Volver al menu"
 			echo "[---------------------------]"
 			read -p "Opción >> " opcion_menu

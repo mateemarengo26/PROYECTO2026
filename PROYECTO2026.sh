@@ -166,7 +166,6 @@ do
 			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu 'Agenda'" >> $archivo_log
 			agenda_nombre="agenda.txt"
 			if [ ! -f "$agenda_nombre" ]; then
-				touch $agenda_nombre
 				echo "El archivo $agenda_nombre no existe, se creó uno nuevo."
 			else
 				echo "Se cargo el archivo $agenda_nombre correctamente."
@@ -206,23 +205,8 @@ do
 				4)
 					read -p "Ingrese la CI: " ci
 					read -p "Ingrese número de campo a mostrar: " campo
-						encontrado=0
-						while read linea
-						do
-							ci_linea=$(echo "$linea" | cut -d":" -f1)
-							if [ "$ci_linea" = "$ci" ]
-							then
-								encontrado=1
-								echo "$linea" | cut -d":" -f$campo
-							fi
-						done < $agenda_nombre
-						if [ $encontrado -eq 0 ]
-						then
-							echo "No se encontró ningún contacto con CI $ci."
-							echo "[$(date +"%T") - $(whoami)]: No se encontro el contacto cuya CI es $ci al buscar informacion." >> $archivo_log
-						else
-							echo "[$(date +"%T") - $(whoami)]: Se busco informacion sobre el contacto cuya CI es $ci" >> $archivo_log
-						fi
+					cut -d":" -f$campo $agenda_nombre
+					echo "[$(date +"%T") - $(whoami)]: Se busco informacion sobre el contacto cuya CI es $ci" >> $archivo_log
 				;;
 				5)
 					read -p "Ingrese la CI del contacto a eliminar: " ci

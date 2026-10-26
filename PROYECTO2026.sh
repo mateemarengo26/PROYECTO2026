@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Ultima actualización: 13/10/26
-# date %{formato} -> Define que se mostrará con el comando date.
-# EJ: %T hora, %Y año, %m mes, %d dia, %B mes del año.
-# if [ -r/-w/-x "archivo ] -> Verifica si ese archivo tiene uno de esos permisos.
+# date %{formato} -> Define que se mostrará con el comando date
+# EJ: %T hora, %Y año, %m mes, %d dia, %B mes del año
+# if [ -r/-w/-x "archivo ] -> Verifica si ese archivo tiene uno de esos permisos
 
 opcion=0
 

@@ -166,6 +166,7 @@ do
 			echo "[$(date +"%T") - $(whoami)]: Ingreso al menu 'Agenda'" >> "$archivo_log"
 			agenda_nombre="agenda.txt"
 			if [ ! -f "$agenda_nombre" ]; then
+				touch "$agenda_nombre"
 				echo "El archivo $agenda_nombre no existe, se creó uno nuevo."
 			else
 				echo "Se cargo el archivo $agenda_nombre correctamente."
@@ -190,7 +191,7 @@ do
 					read -p "Ingrese el apellido: " apellido
 					read -p "Ingrese el número de telefono: " telefono
 					read -p "Ingrese la fecha de nacimiento (dia/mes/año) " fecha
-					echo "$ci:$nombre:$apellido:$telefono:$fecha" >> "$agenda_nombre"
+					echo "$ci:$apellido:$nombre:$telefono:$fecha" >> "$agenda_nombre"
 					echo "[$(date +"%T") - $(whoami)]: Se agrego el contacto $nombre." >> "$archivo_log"
 				;;
 				2)

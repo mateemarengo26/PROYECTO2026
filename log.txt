@@ -1,0 +1,35 @@
+Log de la fecha 26/10/2026 - 20:25:21
+[20:25:24 - thiag]: Ingreso al menu 'Agenda'
+[20:25:24 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:25:49 - thiag]: Se agrego el contacto Thiago.
+[20:25:52 - thiag]: Ingreso al menu 'Agenda'
+[20:25:52 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:26:09 - thiag]: Se agrego el contacto Mateo.
+[20:26:12 - thiag]: Ingreso al menu 'Agenda'
+[20:26:12 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:26:29 - thiag]: Se agrego el contacto Daka.
+[20:26:30 - thiag]: Ingreso al menu 'Agenda'
+[20:26:30 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:26:38 - thiag]: Se busco informacion sobre el contacto cuya CI es 58298998
+[20:29:49 - thiag]: Termino la sesion
+Log de la fecha 26/10/2026 - 20:48:16
+Log de la fecha 26/10/2026 - 20:48:21
+Log de la fecha 26/10/2026 - 20:50:11
+[20:50:14 - thiag]: Ingreso al menu 'Archivo de log'
+[20:52:12 - thiag]: Volvio al menu principal.
+[20:52:15 - thiag]: Ingreso al menu 'Agenda'
+[20:52:15 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:52:18 - thiag]: Se listaron todos los contactos.
+[20:52:23 - thiag]: Ingreso al menu 'Agenda'
+[20:52:23 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:52:30 - thiag]: Se visualizo el contacto de la linea 58298998.
+[20:52:47 - thiag]: Ingreso al menu 'Permisos'
+[20:52:50 - thiag]: Volvio al menu principal.
+[20:52:51 - thiag]: Ingreso al menu 'Agenda'
+[20:52:51 - thiag]: Se verifico la existencia del archivo agenda.txt
+[20:53:02 - thiag]: Se busco informacion sobre el contacto cuya CI es 58298998
+[20:53:08 - thiag]: Termino la sesion
+Log de la fecha 26/10/2026 - 20:56:49
+[20:57:01 - thiag]: Ingreso al menu 'Permisos'
+[20:57:35 - thiag]: No se pudo agregar permisos al archivo d
+[20:57:49 - thiag]: Termino la sesion
